@@ -26,7 +26,7 @@ const About = () => {
             </p>
 
             <p className="text__para mt-[30px]">
-              Lorem ipsum dolor sit amet consectetur, adipisicing elit. Minus
+              Lorem ipsum dolor sit amet consectetur, adipisicing elit.Minus
               adipisci, sequi illo non rem totam, maxime excepturi provident
               libero consectetur repellendus vel? Sapiente quod velit tempora
               enim repellat, architecto corporis!
