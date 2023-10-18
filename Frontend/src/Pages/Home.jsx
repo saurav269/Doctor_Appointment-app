@@ -5,12 +5,14 @@ import heroImg03 from "../assets/images/hero-img03.png";
 import icon01 from "../assets/images/icon01.png";
 import icon02 from "../assets/images/icon02.png";
 import icon03 from "../assets/images/icon03.png";
-import videoIcon from '../assets/images/video-icon.png'
+import videoIcon from '../assets/images/video-icon.png';
+import avatarIcon from '../assets/images/avatar-icon.png';
 import featureImg from "../assets/images/D1.jpg";
 import { Link } from "react-router-dom";
 import { BsArrowRight } from "react-icons/bs";
 import About from "../Components/About/About";
 import ServiceList from "../Components/Services/ServiceList";
+import DoctorList from "../Components/Doctor/DoctorList";
 
 const Home = () => {
   return (
@@ -241,13 +243,36 @@ const Home = () => {
                     <img src={videoIcon} alt='' />
                   </span>
                 </div>
+
+                <div className="w-[65px] lg:w-[96px] bg-[#CCF0F3] py-1 px-2 lg:py-[6px] lg:px-[10px] text-[8px] leading-[8px] lg:text-[12px] lg:leading-4 text-irisBlueColor font-[500] mt-2 lg:mt-4 rounded-full">
+                  Consultation
+                </div>
+                <div className="flex items-center gap-[6px] lg:gap-[10px] mt-2 lg:mt-[18px]">
+                  <img src={avatarIcon} alt='' />
+                  <h4 className="text-[10px] leading-3 lg:text-[16px] lg:leading-[22px] font-[700] text-headingColor">Saurav Mallik</h4>
+                </div>
               </div>
             </div>
           </div>
         </div>
       </section>
-
       {/* ==========================Features Section END===================== */}
+
+      {/* ==================================DOCTORS SECTION============================== */}
+      <section>
+        <div className="container">
+        <div className="xl:w-[470px] mx-auto">
+            <h2 className="heading text-center">Our great doctors</h2>
+            <p className="text__para text-center">
+              World-class care for everyone. Our health System offers unmatched,
+              expert health care.
+            </p>
+          </div>
+          <DoctorList />
+        </div>
+      </section>
+
+      {/* ==========================Doctors Section END===================== */}
     </>
   );
 };
