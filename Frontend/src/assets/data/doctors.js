@@ -1,13 +1,13 @@
 
-import doctorImg01 from '../images/D1.jpg'
-import doctorImg02 from '../images/D2.jpg'
-import doctorImg03 from '../images/D3.png'
+import doctorImg01 from '../images/doc1.jpg'
+import doctorImg02 from '../images/doc2.jpg'
+import doctorImg03 from '../images/doc3.jpg'
 
 export const doctors = [
     {
       id: "01",
       name: "Dr. A Das",
-      specialty: "Surgeon",
+      specialization: "Surgeon",
       avgRating: 4.8,
       totalRating: 272,
       photo: doctorImg01,
@@ -17,7 +17,7 @@ export const doctors = [
     {
       id: "02",
       name: "Dr. S Banik",
-      specialty: "Neurologist",
+      specialization: "Neurologist",
       avgRating: 4.8,
       totalRating: 272,
       photo: doctorImg02,
@@ -27,7 +27,7 @@ export const doctors = [
     {
       id: "03",
       name: "Dr. D Dutta",
-      specialty: "Dermatologist",
+      specialization: "Dermatologist",
       avgRating: 4.8,
       totalRating: 272,
       photo: doctorImg03,
