@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import avatar from "../../assets/images/avatar-icon.png";
 import { formatDate } from "../../utilis/formatDate";
 import { AiFillStar } from "react-icons/ai";
-import FeedbackForm from "./FeedbackForm";
+import FeedBackForm from "./FeedbackForm";
 
 const Feedback = () => {
   const [showFeedbackForm, setShowFeedbackForm] = useState(false);
@@ -44,7 +44,7 @@ const Feedback = () => {
         </div>
       }
 
-      {showFeedbackForm && <FeedbackForm />}
+      {showFeedbackForm && <FeedBackForm />}
     </div>
   );
 };
