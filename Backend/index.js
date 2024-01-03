@@ -3,6 +3,7 @@ const cookieParser = require("cookie-parser")
 const cors = require("cors")
 const mongoose = require("mongoose")
 const dotenv = require("dotenv")
+const connectDB = require("./config/db")
 
 //SETUP DOTENV
 dotenv.config()
@@ -23,6 +24,16 @@ app.get("/", (req,res) => {
 app.use(express.json())
 app.use(cookieParser())
 app.use(cors(corsOptions));
+
+//dot config
+dotenv.config()
+//mongodb connection
+connectDB()
+
+//ALL ROUTES
+app.use('/api/v1/auth', require('./Routes/auth'))
+app.use('/api/v1/users', require('./Routes/user'))
+app.use('/api/v1/doctors', require('./Routes/doctor'))
 
 app.listen(port, () => {
     console.log("Server is running on port" + port)
