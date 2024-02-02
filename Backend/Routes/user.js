@@ -9,4 +9,4 @@ router.get('/',authenticate, restrict(['admin']), getAllUser)
 router.put('/:id',authenticate, restrict(['patient']),updateUser)
 router.delete('/:id',authenticate, restrict(['patient']), deleteUser)
 
-module.exports= router
+module.exports= router;

@@ -34,6 +34,8 @@ connectDB()
 app.use('/api/v1/auth', require('./Routes/auth'))
 app.use('/api/v1/users', require('./Routes/user'))
 app.use('/api/v1/doctors', require('./Routes/doctor'))
+app.use('/api/v1/reviews', require('./Routes/review'))
+
 
 app.listen(port, () => {
     console.log("Server is running on port" + port)
