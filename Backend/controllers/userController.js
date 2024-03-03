@@ -1,5 +1,7 @@
 
 
+const Booking = require("../models/BookingSchema");
+const Doctor = require("../models/DoctorSchema");
 const User = require("../models/UserSchema")
 
 //GET SINGLE USER
@@ -26,6 +28,50 @@ const getAllUser = async(req,res) =>{
 
     }
 }
+
+//FOR USER PROFILE
+const getUserProfile = async(req,res) =>{
+    const userId = req.userId;
+
+    try{
+        const user = await User.findById(userId)
+
+        if(!user){
+            return res.status(404).json({success : false, message: "User not found"})
+        }
+        const {password, ...rest} = user._doc
+        res.status(200).send({success : true, message: "Profile is getting", data: {...rest}})
+
+    }catch(err){
+        console.log(err)
+    }
+}
+
+//FOR APPOINTMENT
+
+const getMyAppointments=async(req,res)=>{
+
+    try{
+
+        //1st step: retrieve appointments from bookings for specific user
+
+        const bookings = await Booking.find({user: req.userId})
+
+        //2ns steps: extract doctor ids from appointment booking
+        const doctorIds = bookings.map(ele => ele.doctor.id)
+
+        //3rd step: retrieve doctors using doctor ids
+          const doctors = await Doctor.find({_id: {$in:doctorIds}}).select('-password')
+          res.status(200).send({success: true, message: 'Appointments are getting', data: doctors})
+    }catch(err){
+        console.log(err)
+    }
+
+}
+
+
+
+
 
 
 //UPDATE USER
@@ -55,4 +101,4 @@ const deleteUser = async(req,res) =>{
 
 }
 
-module.exports = {updateUser, getSingleUser, deleteUser, getAllUser}
+module.exports = {updateUser, getSingleUser, deleteUser, getAllUser, getMyAppointments, getUserProfile}
