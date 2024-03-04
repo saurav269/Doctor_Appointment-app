@@ -56,6 +56,7 @@ const getAllDoctor = async (req, res) => {
 
     }catch(err){
         console.log(err)
+        return res.status(500).json({success : false, message: "Doctor not found, in doctorProfile"})
     }
 
     }

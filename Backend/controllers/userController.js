@@ -65,6 +65,7 @@ const getMyAppointments=async(req,res)=>{
           res.status(200).send({success: true, message: 'Appointments are getting', data: doctors})
     }catch(err){
         console.log(err)
+        res.status(505).send({success: false, message: "something wrong in appontments api"})
     }
 
 }
