@@ -1,4 +1,5 @@
-const Doctor = require("../models/DoctorSchema");
+ const Doctor = require("../models/DoctorSchema");
+ const Booking = require("../models/BookingSchema")
 
 //GET SINGLE DOCTOR
 const getSingleDoctor = async (req, res) => {
@@ -39,6 +40,27 @@ const getAllDoctor = async (req, res) => {
   }
 };
 
+//GET DOCTORS PROFILE
+    const getDoctorProfile=async(req,res)=>{
+      const doctorId = req.userId;
+
+    try{
+        const doctor = await Doctor.findById(doctorId)
+
+        if(!doctor){
+            return res.status(404).json({success : false, message: "Doctor not found"})
+        }
+        const {password, ...rest} = doctor._doc;
+        const appointments = await Booking.find({doctor: doctorId})
+        res.status(200).send({success : true, message: "Profile is getting", data: {...rest, appointments}})
+
+    }catch(err){
+        console.log(err)
+        return res.status(500).json({success : false, message: "Doctor not found, in doctorProfile"})
+    }
+
+    }
+
 //UPDATE Doctor
 const updateDoctor = async (req, res) => {
   const id = req.params.id;
@@ -71,4 +93,4 @@ const deleteDoctor = async (req, res) => {
   }
 };
 
-module.exports = { updateDoctor, getAllDoctor, getSingleDoctor, deleteDoctor };
+module.exports = { updateDoctor, getAllDoctor, getSingleDoctor, deleteDoctor, getDoctorProfile };
