@@ -1,7 +1,17 @@
-import React from "react";
+import React, { useContext } from "react";
 import { BiMenu } from "react-icons/bi";
+import { authContext } from './../../context/AuthContext';
+import { useNavigate } from 'react-router-dom';
 
 const Tabs = ({ tab, setTab }) => {
+
+  const {dispatch} = useContext(authContext)
+  const navigate = useNavigate();
+
+  const handleLogout=()=>{
+    dispatch({type:'LOGOUT'})
+    navigate('/')
+  }
   return (
     <div>
       <span className="lg:hidden">
@@ -43,6 +53,7 @@ const Tabs = ({ tab, setTab }) => {
 
         <div className="mt-[100px] w-full">
           <button
+          onClick={handleLogout}
             className=" w-full bg-[#90939a] p-3 text-[16px] leading-7 rounded-md text-whitehover:transform hover:scale-105 transition duration-300 "
           >
             Logout
